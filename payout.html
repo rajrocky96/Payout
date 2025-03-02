@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Payment – Secure & Fast</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 20px rgba(255, 223, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            font-weight: 600;
+            font-size: 28px;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #FFD700, #FF4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            animation: bounceIn 1.5s ease-in-out;
+        }
+
+        .logos img {
+            width: 50px;
+            transition: transform 0.3s ease-in-out;
+            filter: brightness(90%);
+        }
+
+        .logos img:hover {
+            transform: scale(1.2);
+            filter: brightness(100%);
+        }
+
+        input {
+            width: 90%;
+            padding: 14px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            outline: none;
+            box-shadow: 0px 0px 10px rgba(255, 223, 0, 0.3);
+        }
+
+        .pay-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff9800, #ff4500);
+            color: white;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 5px 15px rgba(255, 87, 34, 0.5);
+        }
+
+        .pay-btn:hover {
+            background: linear-gradient(45deg, #ff4500, #ff9800);
+            transform: scale(1.1);
+            box-shadow: 0px 10px 30px rgba(255, 87, 34, 0.8);
+        }
+
+        .trust-info {
+            text-align: left;
+            font-size: 18px;
+            margin-top: 30px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .trust-info img {
+            width: 30px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🔒 Secure UPI Payment</h2>
+        <p>100% Safe & Instant Payment with Trusted UPI Merchants</p>
+
+        <!-- Payment Logos -->
+        <div class="logos">
+            <img src="https://logodownload.org/wp-content/uploads/2021/06/google-pay-logo-0.png" alt="Google Pay">
+            <img src="https://logodownload.org/wp-content/uploads/2021/06/phonepe-logo-0.png" alt="PhonePe">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Paytm_Logo.png" alt="Paytm">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Amazon_Pay_logo.svg" alt="Amazon Pay">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/BHIM-app-logo.svg" alt="BHIM UPI">
+        </div>
+
+        <!-- Amount Input -->
+        <input type="number" id="amount" placeholder="Enter Amount (₹)" min="1">
+
+        <!-- Payment Button -->
+        <button class="pay-btn" onclick="makePayment()">Pay Now</button>
+
+        <!-- Trust Section (Now at Bottom) -->
+        <div class="trust-info">
+            <p><img src="https://img.icons8.com/ios-filled/50/FFD700/verified-account.png"> ✔ SSL Encrypted Payment                  Gateway</p>
+            <p><img src="https://img.icons8.com/ios-filled/50/FFD700/lock.png"> 🔒 Verified UPI Merchant – Safe   /n/Transactions</p>
+            <p><img src="https://img.icons8.com/ios-filled/50/FFD700/credit-card.png"> 💳 Instant Payment Confirmation – No Delays</p>
+            <p><img src="https://img.icons8.com/ios-filled/50/FFD700/star.png"> 🏆 Trusted by 10,000+ Happy Customers</p>
+        </div>
+    </div>
+
+    <script>
+        function makePayment() {
+            var upi_id = "rr0712457-1@oksbi";  
+            var name = "OTT Service";        
+            var amount = document.getElementById("amount").value; 
+            var transactionNote = "OTT Subscription"; 
+
+            if(amount === "" || amount <= 0) {
+                alert("Please enter a valid amount!");
+                return;
+            }
+
+            var upi_link = `upi://pay?pa=${upi_id}&pn=${name}&am=${amount}&cu=INR&tn=${transactionNote}`;
+
+            window.location.href = upi_link;
+        }
+    </script>
+
+</body>
+</html>
